@@ -1,0 +1,40 @@
+rm bsf.out
+bsf < bsftst1.inp
+ BSF: BREMSSTRAHLUNG SHAPE FUNCTIONS.
+ BSF: VERSION Mar. 29, 1994.
+ BSF: THIS PROGRAM COMPUTES TABULATIONS AS PUBLISHED IN:
+   "SHAPE FUNCTIONS FOR ATOMIC-FIELD BREMSSTRAHLUNG FROM
+    ELECTRONS OF KINETIC ENERGY 1-500 keV ON SELECTED
+    NEUTRAL ATOMS 1<=Z<=92", Lynn Kissel, C. A. Quarles,
+    R. H. Pratt, Atomic Data and Nuclear Data Tables, 28,
+    381-460 (1983).
+ BSF: ##################
+ BSF: ENTER Z (0=>STOP)?
+          0.000
+ BSF: ENTER T1 (IN KEV)?
+          1.000
+ BSF: ##################
+ BSF: ENTER Z (0=>STOP)?
+          0.000
+ BSF: ENTER T1 (IN KEV)?
+        500.000
+ BSF: ##################
+ BSF: ENTER Z (0=>STOP)?
+          0.000
+ BSF: ENTER T1 (IN KEV)?
+         10.000
+ BSF: ##################
+ BSF: ENTER Z (0=>STOP)?
+          0.000
+ BSF: ENTER T1 (IN KEV)?
+          1.000
+ BSF: ##################
+ BSF: ENTER Z (0=>STOP)?
+          0.000
+ BSF: ENTER T1 (IN KEV)?
+        500.000
+ BSF: ##################
+ BSF: ENTER Z (0=>STOP)?
+          0.000
+diff -b -i -w -c bsftst1.out bsf.out
+No differences encountered

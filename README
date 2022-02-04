@@ -1,0 +1,81 @@
+	       BSF (Bremsstrahlung Shape Function) Code
+		      Brief Description of Files
+
+
+			     Lynn Kissel
+		  Computational Physics Group, L-59
+	       Lawrence Livermore National Laboratories
+		     Livermore, California 94551
+
+			 phone: (510)423-7940
+			  fax: (510)423-7228
+		       e-mail: lkissel@llnl.gov
+
+			    April 27, 1994
+
+
+Thank you for your interest in our atomic-field bremsstrahlung data.
+The BSF program computes the bremsstrahlung shape function and energy
+spectrum to an estimated accuracy of 10% or better for 2<Z<92, for
+electron kinetic energy of 1-500 keV. An earlier version of this code
+was used to produce the tables in Kissel, Quarles and Pratt, Atomic
+Data and Nuclear Data Tables 28, 381 (1983).
+
+Primary BSF files:
+
+  BSF.FOR - bremsstrahlung shape function source code. This code is
+    written to conform to ANSI-standard Fortran 77. It has compiled
+    and run under VMS on a VAX, and Lehay Fortran on an IBM-compatible
+    PC. Professor Quarles at Texas Christian University is responsible
+    for the internal algorithms. BSF reads input from the user (on the
+    default input device), and from the files ESPEC.DAT and
+    BMDATA.DAT. It outputs its results to the user (on the default
+    output device) and to the file BSF.OUT.
+
+  ESPEC.DAT - energy-spectrum benchmark data.
+
+  BMDATA.DAT - shape-function-fit benchmark data.
+
+  bsf.fm - FrameMaker document (binary) containing a formatted copy of
+    this information.
+
+  README - plain-text ASCII file containing this information.
+
+Unix-specific files:
+
+  Makefile - Unix make file; use the command make with no arguments to
+    compile and link the BSF executable, and run the sample problem.
+
+  bsf.f - BSF source code for Unix systems. It has been tested under
+    SunOS 4.1.3.
+
+  espec.dat - copy of ESPEC.DAT with the explicit carriage returns
+    removed.
+
+  bmdata.dat - copy of BMDATA.DAT with the explicit carriage returns
+    removed.
+
+  bsftst1.inp - input parameters for sample problem.
+
+  bsftst1.log - diagnostic output for sample problem.
+
+  bsftst1.out - reference tables output by sample problem.
+
+MSDOS-specific files:
+
+  BSF.EXE - MS-DOS executable file. A NDP chip (Numeric Data Processor
+    chip, i.e., 8087/ 80287/80387) is required for execution of this
+    file.
+
+  BSFTST.BAT - MS-DOS batch procedure which runs a sample problem.
+
+  BSFTST.INP - input parameters for use with BSFTST.BAT.
+
+  BSFTST.OUT - tables output from the BSFTST.BAT sample problem.
+
+  BSFTST.LOG - log file of the BSFTST.BAT sample problem.
+
+VMS-specific files:
+
+  BSFTST.COM - command procedure to compile, link and run sample
+    problem.

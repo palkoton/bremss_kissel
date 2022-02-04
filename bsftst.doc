@@ -1,0 +1,51 @@
+
+            BSF (Bremsstrahlung Shape Function) Code
+                   Brief Description of Files
+
+                           Lynn Kissel
+           Test Planning and Diagnostics Division 9312
+                  Sandia National Laboratories
+               Albuquerque, New Mexico  87185-5800
+
+                      phone:  (505)845-9142
+           ARPA Internet address:  LDKISSE@SANDIA.GOV
+
+
+                          June 7, 1990
+
+
+Thank you for your interest in our atomic-field bremsstrahlung
+data.  The BSF program computes the bremsstrahlung shape function
+and energy spectrum to an estimated accuracy of 10% or better for
+2<=Z<=92, for electron kinetic energy of 1-500 keV.  An earlier
+version of this code was used to produce the tables in Kissel,
+Quarles and Pratt, Atomic Data and Nuclear Data Tables vol. 28,
+p. 381 (1983).
+
+The following files are used in the BSF sample problem:
+
+     BSF.FOR - bremsstrahlung shape function source code.  This
+         code is written to conform to ANSI-standard Fortran 77.
+         It has compiled and run under VMS on a VAX, and Lehay
+         Fortran on an IBM-compatible PC.  Professor Quarles at
+         Texas Christian University is responsible for the
+         internal algorithms.  BSF reads input from the user (on
+         the default input device), and from the files ESPEC.DAT
+         and BMDATA.DAT.  It outputs its results to the user (on
+         the default output device) and to the file BSF.OUT.
+
+     ESPEC.DAT - energy-spectrum benchmark data.
+
+     BMDATA.DAT - shape-function-fit benchmark data.
+
+     BSFTST.COM - VAX/VMS command procedure which compiles, links
+         and runs the code on a sample problem.
+
+     BSFTST.LOG - log file of a sample BSF run produced using
+         BSFTST.COM on a VAX 11/785.
+
+     BSFTST.OUT - sample output from BSF using the BSFTST.COM
+         procedure.
+
+     BSFTST.DOC - a text file contining this description of BSF
+         files.

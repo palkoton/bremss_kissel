@@ -1,0 +1,157 @@
+
+$Set NoControl=Y
+$Set NoVerify
+$ ver= 0
+$!  BSFTST.COM, version June 7, 1990.
+$!
+$!  VAX/VMS BSF Tester.
+$!
+$ set noon
+$ on control_y then $goto EXIT
+$ if f$mode().nes."BATCH" then $goto END_BATCH_SETUP
+$   set default sys$login
+$   set default [.bsftst]
+$   set process/name="BSFTST"
+$ END_BATCH_SETUP:
+$!
+$ dir/size/date:modified
+
+Directory UD:[LDKISSE.BSFTST]
+
+BMDATA.DAT;1             19   7-JUN-1990 10:23
+BSF.FOR;1                25   7-JUN-1990 10:23
+BSFTST.COM;1              2   7-JUN-1990 10:23
+BSFTST.OUT;1             50   7-JUN-1990 10:23
+ESPEC.DAT;1             257   7-JUN-1990 10:24
+
+Total of 5 files, 353 blocks.
+$ show process/accounting
+
+ 7-JUN-1990 10:26:18.43                      User: LDKISSE     
+
+Accounting information:
+ Buffered I/O count:       198  Peak working set size:        415
+ Direct I/O count:         111  Peak virtual size:            944
+ Page faults:             1130  Mounted volumes:                0
+ Images activated:           5
+ Elapsed CPU time:      0 00:00:08.75
+ Connect time:          0 00:00:14.29
+$!
+$!  Compile and link.
+$!
+$ fortran/standard bsf
+$ link bsf
+$ delete bsf.obj;
+$ dir/size/date:modified
+
+Directory UD:[LDKISSE.BSFTST]
+
+BMDATA.DAT;1             19   7-JUN-1990 10:23
+BSF.EXE;1                17   7-JUN-1990 10:26
+BSF.FOR;1                25   7-JUN-1990 10:23
+BSF.LIS;1                54   7-JUN-1990 10:26
+BSF.MAP;1                13   7-JUN-1990 10:26
+BSFTST.COM;1              2   7-JUN-1990 10:23
+BSFTST.OUT;1             50   7-JUN-1990 10:23
+ESPEC.DAT;1             257   7-JUN-1990 10:24
+
+Total of 8 files, 437 blocks.
+$ show process/accounting
+
+ 7-JUN-1990 10:26:35.81                      User: LDKISSE     
+
+Accounting information:
+ Buffered I/O count:       272  Peak working set size:       1017
+ Direct I/O count:         231  Peak virtual size:           1424
+ Page faults:             2661  Mounted volumes:                0
+ Images activated:          10
+ Elapsed CPU time:      0 00:00:20.28
+ Connect time:          0 00:00:31.68
+$!
+$!  Test run.
+$!
+$ run bsf
+BSF: BREMSSTRAHLUNG SHAPE FUNCTIONS.
+BSF: VERSION JAN 29, 1986.
+BSF: THIS PROGRAM COMPUTES TABULATIONS AS PUBLISHED IN:
+  "SHAPE FUNCTIONS FOR ATOMIC-FIELD BREMSSTRAHLUNG FROM
+   ELECTRONS OF KINETIC ENERGY 1-500 keV ON SELECTED
+   NEUTRAL ATOMS 1<=Z<=92", Lynn Kissel, C. A. Quarles,
+   R. H. Pratt, Atomic Data and Nuclear Data Tables, 28,
+   381-460 (1983).
+BSF: ##################
+BSF: ENTER Z (0=>STOP)?
+2
+BSF: ENTER T1 (IN KEV)?
+1
+BSF: ##################
+BSF: ENTER Z (0=>STOP)?
+2
+BSF: ENTER T1 (IN KEV)?
+500
+BSF: ##################
+BSF: ENTER Z (0=>STOP)?
+47
+BSF: ENTER T1 (IN KEV)?
+10
+BSF: ##################
+BSF: ENTER Z (0=>STOP)?
+92
+BSF: ENTER T1 (IN KEV)?
+1
+BSF: ##################
+BSF: ENTER Z (0=>STOP)?
+92
+BSF: ENTER T1 (IN KEV)?
+500
+BSF: ##################
+BSF: ENTER Z (0=>STOP)?
+0
+FORTRAN STOP
+$ dir/size/date:modified
+
+Directory UD:[LDKISSE.BSFTST]
+
+BMDATA.DAT;1             19   7-JUN-1990 10:26
+BSF.EXE;1                17   7-JUN-1990 10:26
+BSF.FOR;1                25   7-JUN-1990 10:23
+BSF.LIS;1                54   7-JUN-1990 10:26
+BSF.MAP;1                13   7-JUN-1990 10:26
+BSF.OUT;1                50   7-JUN-1990 10:28
+BSFTST.COM;1              2   7-JUN-1990 10:23
+BSFTST.OUT;1             50   7-JUN-1990 10:23
+ESPEC.DAT;1             257   7-JUN-1990 10:28
+
+Total of 9 files, 487 blocks.
+$ show process/accouting
+
+ 7-JUN-1990 10:28:03.13                      User: LDKISSE     
+
+Accounting information:
+ Buffered I/O count:       305  Peak working set size:       1017
+ Direct I/O count:         282  Peak virtual size:           1424
+ Page faults:             3035  Mounted volumes:                0
+ Images activated:          13
+ Elapsed CPU time:      0 00:01:00.10
+ Connect time:          0 00:01:58.99
+$!
+$!  Compare results with old test.
+$!
+$ differences bsf.out bsftst.out
+Number of difference sections found: 0
+Number of difference records found: 0
+
+DIFFERENCES /IGNORE=(TRAILING_SPACES)/MERGED=1-
+    UD:[LDKISSE.BSFTST]BSF.OUT;1-
+    UD:[LDKISSE.BSFTST]BSFTST.OUT;1
+$!
+$!  Test done.
+$!
+$EXIT:
+  LDKISSE      job terminated at  7-JUN-1990 10:28:04.84
+
+  Accounting information:
+  Buffered I/O count:          319      Peak working set size:  1017
+  Direct I/O count:            297      Peak page file size:    1424
+  Page faults:                3200      Mounted volumes:           0
+  Charged CPU time:     0 00:01:00.99   Elapsed time:     0 00:02:00.80
